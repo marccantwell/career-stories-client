@@ -11,7 +11,7 @@ function AdminPage(props) {
   return (
     <>
       <Meta title="Admin" />
-      <Container>
+      <Container fluid>
         <Row>
           <AdminSection
             bg="white"

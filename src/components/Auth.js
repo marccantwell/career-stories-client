@@ -9,6 +9,7 @@ function Auth(props) {
   const [formAlert, setFormAlert] = useState(null);
 
   const handleAuth = (user) => {
+    // TODO: add onboarding here check if the user has onboarded and created a profile and don't show if they created an org
     router.push(props.afterAuthPath);
   };
 

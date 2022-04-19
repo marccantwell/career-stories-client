@@ -1,35 +1,37 @@
 {
-  "name": "my-divjoy-project",
-  "version": "0.1.0",
-  "private": true,
-  "keywords": [
-    "divjoy"
-  ],
-  "description": "Built with Divjoy, a React codebase generator. You must purchase a license at https://divjoy.com?ref=cs in order to use any of the code in this project.",
-  "dependencies": {
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "next": "12.0.2",
-    "sass": "1.32.13",
-    "react-hook-form": "6.15.1",
-    "react-bootstrap": "1.6.1",
-    "bootstrap": "4.4.1",
-    "es6-promisify": "6.1.0",
-    "auth0-js": "9.16.4",
-    "auth0": "2.36.2",
-    "jwks-rsa": "2.0.4",
-    "jsonwebtoken": "8.5.1",
-    "mailchimp-api-v3": "1.14.0",
-    "@stripe/stripe-js": "1.11.0",
-    "stripe": "8.132.0",
-    "raw-body": "2.4.1",
-    "analytics": "0.3.1",
-    "@analytics/google-analytics": "0.2.2"
-  },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "stripe-webhook": "stripe listen --forward-to localhost:3000/api/stripe-webhook"
-  }
+    "name": "my-divjoy-project",
+    "version": "0.1.0",
+    "private": true,
+    "keywords": [
+        "divjoy"
+    ],
+    "description": "Built with Divjoy, a React codebase generator. You must purchase a license at https://divjoy.com?ref=cs in order to use any of the code in this project.",
+    "dependencies": {
+        "@analytics/google-analytics": "0.2.2",
+        "@apollo/client": "^3.5.10",
+        "@stripe/stripe-js": "1.11.0",
+        "analytics": "0.3.1",
+        "auth0": "2.36.2",
+        "auth0-js": "9.16.4",
+        "bootstrap": "4.4.1",
+        "es6-promisify": "6.1.0",
+        "graphql": "^16.3.0",
+        "jsonwebtoken": "8.5.1",
+        "jwks-rsa": "2.0.4",
+        "mailchimp-api-v3": "1.14.0",
+        "next": "12.0.2",
+        "raw-body": "2.4.1",
+        "react": "17.0.2",
+        "react-bootstrap": "1.6.1",
+        "react-dom": "17.0.2",
+        "react-hook-form": "6.15.1",
+        "sass": "1.32.13",
+        "stripe": "8.132.0"
+    },
+    "scripts": {
+        "dev": "next dev -p 3001",
+        "build": "next build",
+        "start": "next start",
+        "stripe-webhook": "stripe listen --forward-to localhost:3001/api/stripe-webhook"
+    }
 }

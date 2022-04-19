@@ -2,11 +2,14 @@ import React from "react";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Link from "next/link";
+import AdminOrg from "components/AdminOrg";
 import AdminUsers from "components/AdminUsers";
 import Principles from "components/Principles";
+import { Breadcrumb, Row } from "react-bootstrap";
 
 function AdminSection(props) {
   const validSections = {
+    org: true,
     users: true,
     principles: true,
   };
@@ -23,6 +26,11 @@ function AdminSection(props) {
       <Col lg={3}>
         <Nav variant="pills" activeKey={section} className="flex-column">
           <Nav.Item>
+            <Link href="/admin/org" passHref={true}>
+              <Nav.Link eventKey="org">Organization Details</Nav.Link>
+            </Link>
+          </Nav.Item>
+          <Nav.Item>
             <Link href="/admin/users" passHref={true}>
               <Nav.Link eventKey="users">Users</Nav.Link>
             </Link>
@@ -35,9 +43,18 @@ function AdminSection(props) {
         </Nav>
       </Col>
       <Col>
-        {section === "users" && <AdminUsers {...data} />}
+        <Row>
+          <Breadcrumb>Bread</Breadcrumb>
+        </Row>
+        <Row>
+          <Col>
+            {section === "org" && <AdminOrg {...data} />}
 
-        {section === "principles" && <Principles {...data} />}
+            {section === "users" && <AdminUsers {...data} />}
+
+            {section === "principles" && <Principles {...data} />}
+          </Col>
+        </Row>
       </Col>
     </>
   );

@@ -12,7 +12,7 @@ function NavbarCustom(props) {
 
   return (
     <Navbar bg={props.bg} variant={props.variant} expand={props.expand}>
-      <Container>
+      <Container fluid>
         <Link href="/" passHref={true}>
           <Navbar.Brand>
             <img
@@ -27,26 +27,35 @@ function NavbarCustom(props) {
         <Navbar.Collapse id="navbar-nav" className="justify-content-end">
           <Nav>
             {auth.user && (
-              <NavDropdown id="dropdown" title="Account" alignRight={true}>
-                <Link href="/dashboard" passHref={true}>
-                  <NavDropdown.Item active={false}>Dashboard</NavDropdown.Item>
-                </Link>
-                <Link href="/settings/general" passHref={true}>
-                  <NavDropdown.Item active={false}>Settings</NavDropdown.Item>
-                </Link>
-                <Dropdown.Divider />
-                <Link href="/auth/signout" passHref={true}>
-                  <NavDropdown.Item
-                    active={false}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      auth.signout();
-                    }}
-                  >
-                    Sign out
-                  </NavDropdown.Item>
-                </Link>
-              </NavDropdown>
+              <>
+                <Nav.Item>
+                  <Link href="/stories" passHref={true}>
+                    <Nav.Link>Stories</Nav.Link>
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link href="/admin/users" passHref={true}>
+                    <Nav.Link>Admin Tools</Nav.Link>
+                  </Link>
+                </Nav.Item>
+                <NavDropdown id="dropdown" title="Account" alignRight={true}>
+                  <Link href="/settings/general" passHref={true}>
+                    <NavDropdown.Item active={false}>Settings</NavDropdown.Item>
+                  </Link>
+                  <Dropdown.Divider />
+                  <Link href="/auth/signout" passHref={true}>
+                    <NavDropdown.Item
+                      active={false}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        auth.signout();
+                      }}
+                    >
+                      Sign out
+                    </NavDropdown.Item>
+                  </Link>
+                </NavDropdown>
+              </>
             )}
 
             {!auth.user && (

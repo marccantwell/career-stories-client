@@ -5,30 +5,26 @@ import NavbarCustom from "components/NavbarCustom";
 import Footer from "components/Footer";
 import "util/analytics";
 import { AuthProvider } from "util/auth";
+import { ApolloProvider } from "@apollo/client";
+import client from "../apollo-client";
 
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <>
-        <NavbarCustom
-          bg="white"
-          variant="light"
-          expand="md"
-          logo="https://uploads.divjoy.com/logo.svg"
-        />
-
+      <ApolloProvider client={client}>
+        <NavbarCustom bg="light" variant="light" expand="md" logo="/logo.png" />
         <Component {...pageProps} />
 
         <Footer
           bg="light"
           textColor="dark"
-          size="sm"
+          size="small"
           bgImage=""
           bgImageOpacity={1}
-          copyright={`© ${new Date().getFullYear()} Company`}
-          logo="https://uploads.divjoy.com/logo.svg"
+          copyright={`© ${new Date().getFullYear()} Career Stories`}
+          logo="logo.png"
         />
-      </>
+      </ApolloProvider>
     </AuthProvider>
   );
 }

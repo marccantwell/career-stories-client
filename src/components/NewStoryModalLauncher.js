@@ -2,9 +2,54 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import { useAuth } from "util/auth";
+
+import { gql, useMutation } from "@apollo/client";
+
+const STORY_CREATE = gql`
+  mutation StoryCreate(
+    $situation: String!
+    $task: String!
+    $action: String!
+    $result: String!
+    $auth0Uid: String!
+    $principleId: Int
+    $organizationId: Int
+  ) {
+    storyCreate(
+      input: {
+        storyInput: {
+          situation: $situation
+          task: $task
+          action: $action
+          result: $result
+          auth0Uid: $auth0Uid
+          principleId: $principleId
+          organizationId: $organizationId
+        }
+      }
+    ) {
+      story {
+        situation
+        task
+        action
+        result
+        userId
+        principleId
+        organizationId
+      }
+    }
+  }
+`;
 
 function NewStoryModalLauncher(props) {
   const [show, setShow] = useState(false);
+  const auth = useAuth();
+  console.log(auth.user);
+  const [storyCreate, { data, loading, error }] = useMutation(STORY_CREATE);
+
+  if (loading) return "Submitting...";
+  if (error) return `Submission error! ${error.message}`;
 
   return (
     <>
@@ -81,7 +126,20 @@ function NewStoryModalLauncher(props) {
               <Button
                 variant="secondary"
                 size="md"
-                onClick={() => setShow(false)}
+                onClick={() => {
+                  storyCreate({
+                    variables: {
+                      situation: formSituation.value,
+                      task: formTask.value,
+                      action: formAction.value,
+                      result: formResult.value,
+                      auth0Uid: auth.user.uid,
+                      organizationId: 1,
+                      principleId: 1,
+                    },
+                  });
+                  setShow(false);
+                }}
               >
                 Save Changes
               </Button>

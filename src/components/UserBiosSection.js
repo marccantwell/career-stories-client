@@ -8,26 +8,7 @@ import SectionHeader from "components/SectionHeader";
 import Avatar from "components/Avatar";
 
 function UserBiosSection(props) {
-  const users = [
-    {
-      avatar: "https://uploads.divjoy.com/pravatar-150x-68.jpeg",
-      name: "John Smith",
-      role: "Software Engineer",
-      bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo.",
-    },
-    {
-      avatar: "https://uploads.divjoy.com/pravatar-150x-35.jpeg",
-      name: "Lisa Zinn",
-      role: "Software Engineer",
-      bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo, corporis totam! Labore reprehenderit beatae magnam animi!",
-    },
-    {
-      avatar: "https://uploads.divjoy.com/pravatar-150x-16.jpeg",
-      name: "Diana Low",
-      role: "Designer",
-      bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis sapiente explicabo, corporis totam! Labore reprehenderit beatae magnam animi!",
-    },
-  ];
+  const users = props.users;
 
   return (
     <Section
@@ -57,9 +38,11 @@ function UserBiosSection(props) {
               <Card>
                 <Card.Body className="d-flex flex-column text-center align-items-center p-4">
                   <Avatar src={user.avatar} alt={user.name} size="128px" />
-                  <h6 className="font-weight-bold mb-0 mt-4">{user.name}</h6>
-                  <small>{user.role}</small>
-                  <Card.Text className="mt-4">{user.bio}</Card.Text>
+                  <h6 className="font-weight-bold mb-0 mt-4">
+                    {user.firstName}
+                  </h6>
+                  <small>{user.lastName}</small>
+                  <Card.Text className="mt-4"></Card.Text>
                 </Card.Body>
               </Card>
             </Col>
